@@ -4,11 +4,6 @@
 int main() {
     
     int NumberOfGames;
-    char a = 'a';
-    char b = 'b';
-    char c = 'c';
-    char d = 'd';
-    char e = 'e';
     int WinsPlayer_a = 0;
     int LosesPlayer_a = 0;
     int DrawPlayer_a = 0;
