@@ -20,12 +20,11 @@ int main() {
     int LosesPlayer_e = 0;
     int DrawPlayer_e = 0;
     
-    
     std::cin >> NumberOfGames;
+    
     int i = 0;
-    while(i <= (NumberOfGames - 1)){
-        i = i + 1;
-        
+    while (i <= NumberOfGames - 1){
+     
         char FirstPlayer;
         char SecondPlayer;
         int FirstResultFirst;
@@ -45,25 +44,22 @@ int main() {
         
         
         std::cin >> FirstPlayer >> FirstResultFirst >> SecondResultFirst >> ThirdResultFirst >> FourthResultFirst >> SecondPlayer >> FirstResultSecond  >> SecondResultSecond  >> ThirdResultSecond >> FourthResultSecond;
-        std::cout << std::endl;
         
-        // sort buble
+        if (FirstResultFirst > SecondResultFirst){
+            int temp = FirstResultFirst;
+            FirstResultFirst = SecondResultFirst;
+            SecondResultFirst = temp;
+        }
      
-     if (FirstResultFirst > SecondResultFirst){
-     int temp = FirstResultFirst;
-     FirstResultFirst = SecondResultFirst;
-     SecondResultFirst = temp;
-     }
-     
-     if (SecondResultFirst > ThirdResultFirst){
-     int temp = SecondResultFirst;
-     SecondResultFirst = ThirdResultFirst;
-     ThirdResultFirst = temp;
-         if (FirstResultFirst > SecondResultFirst){
-         int temp = FirstResultFirst;
-         FirstResultFirst = SecondResultFirst;
-         SecondResultFirst = temp;
-         }
+        if (SecondResultFirst > ThirdResultFirst){
+            int temp = SecondResultFirst;
+            SecondResultFirst = ThirdResultFirst;
+            ThirdResultFirst = temp;
+            if (FirstResultFirst > SecondResultFirst){
+                int temp = FirstResultFirst;
+                FirstResultFirst = SecondResultFirst;
+                SecondResultFirst = temp;
+            }
         }
         if (ThirdResultFirst > FourthResultFirst){
             int temp = ThirdResultFirst;
@@ -77,26 +73,44 @@ int main() {
                     int temp = FirstResultFirst;
                     FirstResultFirst = SecondResultFirst;
                     SecondResultFirst = temp;
-                }}}
+                }
+            }
+        }
          
+        
+        if (FirstResultSecond > SecondResultSecond){
+            int temp = FirstResultSecond;
+            FirstResultSecond = SecondResultSecond;
+            SecondResultSecond = temp;
+        }
      
-     if (FirstResultSecond > SecondResultSecond){
-     int temp = FirstResultSecond;
-     FirstResultSecond = SecondResultSecond;
-     SecondResultSecond = temp;
-     }
-     
-     if (SecondResultSecond > ThirdResultSecond){
-     int temp = SecondResultSecond;
-     SecondResultSecond = ThirdResultSecond;
-     ThirdResultSecond = temp;
-     }
-     if (ThirdResultSecond > FourthResultSecond){
-     int temp = ThirdResultSecond;
-     ThirdResultSecond = FourthResultSecond;
-     FourthResultSecond = temp;
-     }
-     
+        if (SecondResultSecond > ThirdResultSecond){
+            int temp = SecondResultSecond;
+            SecondResultSecond = ThirdResultSecond;
+            ThirdResultSecond = temp;
+            if (FirstResultSecond > SecondResultSecond){
+                int temp = FirstResultSecond;
+                FirstResultSecond = SecondResultSecond;
+                SecondResultSecond = temp;
+            }
+        }
+        if (ThirdResultSecond > FourthResultSecond){
+            int temp = ThirdResultSecond;
+            ThirdResultSecond = FourthResultSecond;
+            FourthResultSecond = temp;
+            if (SecondResultSecond > ThirdResultSecond){
+                int temp = SecondResultSecond;
+                SecondResultSecond = ThirdResultSecond;
+                ThirdResultSecond = temp;
+                if (FirstResultSecond > SecondResultSecond){
+                    int temp = FirstResultSecond;
+                    FirstResultSecond = SecondResultSecond;
+                    SecondResultSecond = temp;
+                }
+            }
+        }
+         
+        
       
    
      // analiza wynikow
@@ -364,23 +378,23 @@ int main() {
      WinsPlayer_e = WinsPlayer_e + WonSecondPlayer;
      LosesPlayer_e = LosesPlayer_e + LostSecondPlayer;
      DrawPlayer_e = DrawPlayer_e + DrawSecondPlayer;
-     
-       // std::cout << std::endl;
-     
-     } }
+     }
+        i = i + 1;
+    }
      
      
      // wypisanie wyniku
      if (WinsPlayer_a != 0 || LosesPlayer_a != 0 || DrawPlayer_a != 0){
+         int games = WinsPlayer_a + LosesPlayer_a + DrawPlayer_a;
      std::cout << "gracz a " << std::endl;
      if (WinsPlayer_a != 0){
-     std::cout << "    wygrane: " << (1.0 * WinsPlayer_a * 100)/(WinsPlayer_a + LosesPlayer_a + DrawPlayer_a) << "% " << std::endl;
+     std::cout << "    wygrane: " << 100.0 * WinsPlayer_a / games << "%" << std::endl;
      }
      if (DrawPlayer_a != 0){
-     std::cout << "    remisy: " << (1.0 * DrawPlayer_a * 100)/(WinsPlayer_a + LosesPlayer_a + DrawPlayer_a) << "% " << std::endl;
+     std::cout << "    remisy: " << 100.0 * DrawPlayer_a / games << "%" << std::endl;
      }
      if (LosesPlayer_a != 0){
-     std::cout << "    przegrane: " << (1.0 * LosesPlayer_a * 100)/(WinsPlayer_a + LosesPlayer_a + DrawPlayer_a) << "% " << std::endl;
+     std::cout << "    przegrane: " << 100.0 * LosesPlayer_a / games << "%" << std::endl;
          
      }
          std::cout << std::endl;
@@ -388,15 +402,16 @@ int main() {
     
      
      if (WinsPlayer_b != 0 || LosesPlayer_b != 0 || DrawPlayer_b != 0){
+         int games = WinsPlayer_b + LosesPlayer_b + DrawPlayer_b;
         std::cout << "gracz b " << std::endl;
      if (WinsPlayer_b != 0){
-     std::cout << "    wygrane: " << (1.0 * WinsPlayer_b * 100)/(WinsPlayer_b + LosesPlayer_b + DrawPlayer_b) << "% " << std::endl;
+     std::cout << "    wygrane: " << 100.0 * WinsPlayer_b / games << "%" << std::endl;
      }
      if (DrawPlayer_b != 0){
-     std::cout << "    remisy: " << (1.0 * DrawPlayer_b * 100)/(WinsPlayer_b + LosesPlayer_b + DrawPlayer_b) << "% " << std::endl;
+     std::cout << "    remisy: " << 100.0 * DrawPlayer_b / games << "%" << std::endl;
      }
      if (LosesPlayer_b != 0){
-     std::cout << "    przegrane: " << (1.0 * LosesPlayer_b * 100)/(WinsPlayer_b + LosesPlayer_b + DrawPlayer_b) << "% " << std::endl;
+     std::cout << "    przegrane: " << 100.0 * LosesPlayer_b / games << "%" << std::endl;
          
      }
          std::cout << std::endl;
@@ -404,16 +419,16 @@ int main() {
     
      
      if (WinsPlayer_c != 0 || LosesPlayer_c != 0 || DrawPlayer_c != 0){
-        
+         
      std::cout << "gracz c " << std::endl;
      if (WinsPlayer_c != 0){
-     std::cout << "    wygrane: " << (1.0 * WinsPlayer_c * 100)/(WinsPlayer_c + LosesPlayer_c + DrawPlayer_c) << "% " << std::endl;
+     std::cout << "    wygrane: " << 100.0 * WinsPlayer_c / (WinsPlayer_c + LosesPlayer_c + DrawPlayer_c) << "%" << std::endl;
      }
      if (DrawPlayer_c != 0){
-     std::cout << "    remisy: " << (1.0 * DrawPlayer_c * 100)/(WinsPlayer_c + LosesPlayer_c + DrawPlayer_c) << "% " << std::endl;
+     std::cout << "    remisy: " << 100.0 * DrawPlayer_c / (WinsPlayer_c + LosesPlayer_c + DrawPlayer_c) << "%" << std::endl;
      }
      if (LosesPlayer_c != 0){
-     std::cout << "    przegrane: " << (1.0 * LosesPlayer_c * 100)/(WinsPlayer_c + LosesPlayer_c + DrawPlayer_c) << "% " << std::endl;
+     std::cout << "    przegrane: " << 100.0 * LosesPlayer_c / (WinsPlayer_c + LosesPlayer_c + DrawPlayer_c) << "%" << std::endl;
          
      }
          std::cout << std::endl;
@@ -424,31 +439,30 @@ int main() {
          
      std::cout << "gracz d " << std::endl;
      if (WinsPlayer_d != 0){
-     std::cout << "    wygrane: " << (1.0 * WinsPlayer_d * 100)/(WinsPlayer_d + LosesPlayer_d + DrawPlayer_d) << "% " << std::endl;
+     std::cout << "    wygrane: " << 100.0 * WinsPlayer_d / (WinsPlayer_d + LosesPlayer_d + DrawPlayer_d) << "%" << std::endl;
      }
      if (DrawPlayer_d != 0){
-     std::cout << "    remisy: " << (1.0 * DrawPlayer_d * 100)/(WinsPlayer_d + LosesPlayer_d + DrawPlayer_d) << "% " << std::endl;
+     std::cout << "    remisy: " << 100.0 * DrawPlayer_d / (WinsPlayer_d + LosesPlayer_d + DrawPlayer_d) << "%" << std::endl;
      }
      if (LosesPlayer_d != 0){
-     std::cout << "    przegrane: " << (1.0 * LosesPlayer_d * 100)/(WinsPlayer_d + LosesPlayer_d + DrawPlayer_d) << "% " << std::endl;
+     std::cout << "    przegrane: " << 100.0 * LosesPlayer_d / (WinsPlayer_d + LosesPlayer_d + DrawPlayer_d) << "%" << std::endl;
          
      }
-         std::cout << std::endl;
+        std::cout << std::endl;
      }
      
     
     
      if (WinsPlayer_e != 0 || LosesPlayer_e != 0 || DrawPlayer_e != 0){
-        
      std::cout << "gracz e " << std::endl;
      if (WinsPlayer_e != 0){
-     std::cout << "    wygrane: " << (1.0 * WinsPlayer_e * 100)/(WinsPlayer_e + LosesPlayer_e + DrawPlayer_e) << "% " << std::endl;
+     std::cout << "    wygrane: " << 100.0 * WinsPlayer_e / (WinsPlayer_e + LosesPlayer_e + DrawPlayer_e) << "%" << std::endl;
      }
      if (DrawPlayer_e != 0){
-     std::cout << "    remisy: " << (1.0 * DrawPlayer_e * 100)/(WinsPlayer_e + LosesPlayer_e + DrawPlayer_e) << "% " << std::endl;
+     std::cout << "    remisy: " << 100.0 * DrawPlayer_e / (WinsPlayer_e + LosesPlayer_e + DrawPlayer_e) << "%" << std::endl;
      }
      if (LosesPlayer_e != 0){
-     std::cout << "    przegrane: " << (1.0 * LosesPlayer_e * 100)/(WinsPlayer_e + LosesPlayer_e + DrawPlayer_e) << "% " << std::endl;
+     std::cout << "    przegrane: " << 100.0 * LosesPlayer_e / (WinsPlayer_e + LosesPlayer_e + DrawPlayer_e) << "%" << std::endl;
      }}
      
      
